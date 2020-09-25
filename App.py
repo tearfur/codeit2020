@@ -1,6 +1,6 @@
 import logging
 import socket
-from codeitsuisse import  app
+from codeitsuisse import app
 logger = logging.getLogger(__name__)
 
 @app.route('/', methods=['GET'])
@@ -24,4 +24,4 @@ if __name__ == "__main__":
     sock.bind(('localhost', 0))
     port = sock.getsockname()[1]
     sock.close()
-    app.run(port=port)
+    app.run(port=5000)
