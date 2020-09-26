@@ -27,7 +27,7 @@ def evaluateSocialDist():
         i += 1
 
     logging.info("My result :{}".format(ans))
-    return json.dumps(ans);
+    return json.dumps({"answers": ans});
 
 
 
