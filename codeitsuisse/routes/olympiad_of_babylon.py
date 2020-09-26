@@ -38,7 +38,7 @@ def evaluateOlympiad():
                 for j in booksAvailable:
                     if j != i:
                         print("Loop j = "+str(j))
-                        if (target - j) >= 0:
+                        if (targetClone - j) >= 0:
                             targetClone -= j
                             print("tarclone = "+str(targetClone))
                             temp.append(j)
