@@ -23,6 +23,8 @@ def evaluateFruit():
         "maWatermeleon" : 90
     }
 
+    result = 0
+    
     for x in data:
         result += data[x] * weights[x]
 
