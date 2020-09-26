@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/inventory-management', methods=['POST'])
 def evaluateInventory():
-    data = request.get_data().decode("utf-8");
+    data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
 
     def get_pre_result(d, i, j, search_in, item_in):
