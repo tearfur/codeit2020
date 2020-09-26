@@ -15,12 +15,12 @@ def evaluateFruit():
     logging.info("data sent for evaluation {}".format(data))
 
     weights = {
-        "maApple" : 17,
+        "maApple" : 12,
         "maAvocado" : 28,
-        "maPineapple" : 57,
+        "maPineapple" : 37,
         "maPomegranate" : 11,
         "maRamubutan" : 13,
-        "maWatermelon" : 130
+        "maWatermelon" : 72
     }
 
     result = 0
