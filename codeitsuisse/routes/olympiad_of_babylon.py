@@ -33,7 +33,7 @@ def evaluateOlympiad():
                 temp = []
                 targetClone = target
                 targetClone -= i
-                print("tarclone = "+tarClone)
+                print("tarclone = "+str(targetClone))
                 temp.append(i)
                 for j in booksAvailable:
                     if j != i:
