@@ -24,23 +24,29 @@ def evaluateCluster():
         def search(i, j):
             q = Queue()
             q.put([i, j])
+            read[i][j] = True
             while not q.empty():
-                x, y = q.get()
-                read[x][y] = True
-                if x > 0:
-                    if y > 0 and data[x - 1][y - 1].isnumeric() and not read[x - 1][y - 1]:
-                        q.put([x - 1, y - 1])
-                    if data[x - 1][y].isnumeric() and not read[x - 1][y]:
-                        q.put([x - 1, y])
-                    if y < M - 1 and data[x - 1][y + 1].isnumeric() and not read[x - 1][y + 1]:
-                        q.put([x - 1, y + 1])
-                if x < N - 1:
-                    if y > 0 and data[x + 1][y - 1].isnumeric() and not read[x + 1][y - 1]:
-                        q.put([x + 1, y - 1])
-                    if data[x + 1][y].isnumeric() and not read[x + 1][y]:
-                        q.put([x + 1, y])
-                    if y < M - 1 and data[x + 1][y + 1].isnumeric() and not read[x + 1][y + 1]:
-                        q.put([x + 1, y + 1])
+                y, x = q.get()
+                if y > 0:
+                    if x > 0 and data[y - 1][x - 1].isnumeric() and not read[y - 1][x - 1]:
+                        q.put([y - 1, x - 1])
+                        read[y - 1][x - 1] = True
+                    if data[y - 1][x].isnumeric() and not read[y - 1][x]:
+                        q.put([y - 1, x])
+                        read[y - 1][x] = True
+                    if x < M - 1 and data[y - 1][x + 1].isnumeric() and not read[y - 1][x + 1]:
+                        q.put([y - 1, x + 1])
+                        read[y - 1][x + 1] = True
+                if y < N - 1:
+                    if x > 0 and data[y + 1][x - 1].isnumeric() and not read[y + 1][x - 1]:
+                        q.put([y + 1, x - 1])
+                        read[y + 1][x - 1] = True
+                    if data[y + 1][x].isnumeric() and not read[y + 1][x]:
+                        q.put([y + 1, x])
+                        read[y + 1][x] = True
+                    if x < M - 1 and data[y + 1][x + 1].isnumeric() and not read[y + 1][x + 1]:
+                        q.put([y + 1, x + 1])
+                        read[y + 1][x + 1] = True
 
 
         for i, row in enumerate(data):
