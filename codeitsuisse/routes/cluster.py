@@ -13,36 +13,33 @@ def evaluateCluster():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
 
-    M = len(data[0])
-    N = len(data)
-
+    ans = 0
     if 3 <= M <= 1000 and 3 <= N <= 1000:
         read = [[False] * M] * N
 
 
-            def search(i, j):
-                q = Queue()
-                q.put([i, j])
-                while not q.empty():
-                    x, y = q.get()
-                    read[x][y] = True
-                    if x > 0:
-                        if y > 0 and data[x - 1][y - 1].isnumeric() and not read[x - 1][y - 1]:
-                            q.put([x - 1, y - 1])
-                        if data[x - 1][y].isnumeric() and not read[x - 1][y]:
-                            q.put([x - 1, y])
-                        if y < M - 1 and data[x - 1][y + 1].isnumeric() and not read[x - 1][y + 1]:
-                            q.put([x - 1, y + 1])
-                    if x < N - 1:
-                        if y > 0 and data[x + 1][y - 1].isnumeric() and not read[x + 1][y - 1]:
-                            q.put([x + 1, y - 1])
-                        if data[x + 1][y].isnumeric() and not read[x + 1][y]:
-                            q.put([x + 1, y])
-                        if y < M - 1 and data[x + 1][y + 1].isnumeric() and not read[x + 1][y + 1]:
-                            q.put([x + 1, y + 1])
+        def search(i, j):
+            q = Queue()
+            q.put([i, j])
+            while not q.empty():
+                x, y = q.get()
+                read[x][y] = True
+                if x > 0:
+                    if y > 0 and data[x - 1][y - 1].isnumeric() and not read[x - 1][y - 1]:
+                        q.put([x - 1, y - 1])
+                    if data[x - 1][y].isnumeric() and not read[x - 1][y]:
+                        q.put([x - 1, y])
+                    if y < M - 1 and data[x - 1][y + 1].isnumeric() and not read[x - 1][y + 1]:
+                        q.put([x - 1, y + 1])
+                if x < N - 1:
+                    if y > 0 and data[x + 1][y - 1].isnumeric() and not read[x + 1][y - 1]:
+                        q.put([x + 1, y - 1])
+                    if data[x + 1][y].isnumeric() and not read[x + 1][y]:
+                        q.put([x + 1, y])
+                    if y < M - 1 and data[x + 1][y + 1].isnumeric() and not read[x + 1][y + 1]:
+                        q.put([x + 1, y + 1])
 
 
-        ans = 0
         for i, row in enumerate(data):
             for j, unit in enumerate(row):
                 if unit == "1" and not read[i][j]:
