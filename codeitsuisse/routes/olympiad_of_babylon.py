@@ -50,6 +50,7 @@ def evaluateOlympiad():
             for x in bye:
                 count += 1
                 booksAvailable.remove(x)
+            bye.clear()
             print(booksAvailable)
 
     result = {"optimalNumberOfBooks":count}
