@@ -19,8 +19,8 @@ def evaluateFruit():
         fruits.append(x)
 
     weight1 = 35
-    weight2 = 75
-    weight3 = 95
+    weight2 = 65
+    weight3 = 90
 
     result = fruits[0]*weight1 + fruits[1]*weight2 + fruits[2]*weight3
 
