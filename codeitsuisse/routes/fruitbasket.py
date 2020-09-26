@@ -11,7 +11,6 @@ logger = logging.getLogger(__name__)
 def evaluateFruit():
     data = request.get_data();
     json.loads(data)
-    json.dump(data, sort_keys=True, indent=4)
     print(data)
     logging.info("data sent for evaluation {}".format(data))
 
