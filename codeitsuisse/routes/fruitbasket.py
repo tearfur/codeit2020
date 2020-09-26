@@ -18,8 +18,8 @@ def evaluateFruit():
         "maApple" : 15,
         "maAvocado" : 30,
         "maPineapple" : 80,
-        "maPomegranate" : 25,
-        "maRamubutan" : 50,
+        "maPomegranate" : 15,
+        "maRamubutan" : 40,
         "maWatermelon" : 90
     }
 
