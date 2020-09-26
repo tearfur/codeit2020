@@ -14,8 +14,6 @@ def evaluateOlympiad():
 
     daysAvailable = data.get("days")
     booksAvailable = data.get("books")
-    print(daysAvailable)
-    print(booksAvailable)
 
     count = 0
 
@@ -44,11 +42,13 @@ def evaluateOlympiad():
                             temp.append(j)
                             if targetClone < eff or eff == 0:
                                 eff = targetClone
+                                print("eff = "+str(eff))
                                 bye = temp
                 temp.clear()
                 for x in bye:
                     count += 1
                     booksAvailable.remove(x)
+        print(booksAvailable)
 
     result = {"optimalNumberOfBooks":count}
 
