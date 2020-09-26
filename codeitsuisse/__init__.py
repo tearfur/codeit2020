@@ -6,3 +6,4 @@ import codeitsuisse.routes.salad
 import codeitsuisse.routes.geometry
 import codeitsuisse.routes.social_dist
 import codeitsuisse.routes.cluster
+import codeitsuisse.routes.gmo
