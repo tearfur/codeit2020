@@ -24,18 +24,23 @@ def evaluatePortfolio():
         target = x
         bye = []
         for i in booksAvailable:
+            print("Loop i = "+i)
             if target == i:
+                print("target = i blyat")
                 count += 1
                 booksAvailable.remove(i)
             elif i < target :
                 temp = []
                 targetClone = target
                 targetClone -= i
+                print("tarclone = "+tarClone)
                 temp.append(i)
                 for j in booksAvailable:
                     if j != i:
+                        print("Loop j = "+j)
                         if target - j >= 0:
                             targetClone -= j
+                            print("tarclone = "+ tarClone)
                             temp.append(j)
                             if targetClone < eff or eff == 0:
                                 eff = targetClone
@@ -45,8 +50,7 @@ def evaluatePortfolio():
                     count += 1
                     booksAvailable.remove(x)
 
-    optimal = {"optimalNumberOfBooks":count}
-    result = json.dumps(optimal)
+    result = {"optimalNumberOfBooks":count}
 
     logging.info("My result :{}".format(result))
     return json.dumps(result);
