@@ -45,6 +45,7 @@ def evaluateOlympiad():
                                 print("eff = "+str(eff))
                                 bye = temp
             temp.clear()
+            print(bye)
             for x in bye:
                 count += 1
                 booksAvailable.remove(x)
