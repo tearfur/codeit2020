@@ -15,19 +15,13 @@ def evaluateSocialDist():
 
     tests = data.get("tests");
     
-    i = 0
     ans = {}
-    while str(i) in tests:
-        case = tests[str(i)]
+    for key in tests:
+        case = tests[key]
         fixed = case["people"] + (case["people"] - 1) * case["spaces"]
         free = case["seats"] - fixed
 
-        ans[str(i)] = comb(case["people"] + 1 + free - 1, free)
-
-        i += 1
-
-    print(tests)
-    print(ans)
+        ans[key] = comb(case["people"] + 1 + free - 1, free)
 
     logging.info("My result :{}".format(ans))
     return json.dumps({"answers": ans});
