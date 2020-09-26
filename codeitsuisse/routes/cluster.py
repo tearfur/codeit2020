@@ -20,26 +20,26 @@ def evaluateCluster():
         read = [[False] * M] * N
 
 
-        def search(i, j):
-            q = Queue()
-            q.put([i, j])
-            while not q.empty():
-                x, y = q.get()
-                read[x][y] = True
-                if x > 0:
-                    if y > 0 and not read[x - 1][y - 1]:
-                        q.put([x - 1, y - 1])
-                    if not read[x - 1][y]:
-                        q.put([x - 1, y])
-                    if y < M - 1 and not read[x - 1][y + 1]:
-                        q.put([x - 1, y + 1])
-                if x < N - 1:
-                    if y > 0 and not read[x + 1][y - 1]:
-                        q.put([x + 1, y - 1])
-                    if not read[x + 1][y]:
-                        q.put([x + 1, y])
-                    if y < M - 1 and not read[x + 1][y + 1]:
-                        q.put([x + 1, y + 1])
+            def search(i, j):
+                q = Queue()
+                q.put([i, j])
+                while not q.empty():
+                    x, y = q.get()
+                    read[x][y] = True
+                    if x > 0:
+                        if y > 0 and data[x - 1][y - 1].isnumeric() and not read[x - 1][y - 1]:
+                            q.put([x - 1, y - 1])
+                        if data[x - 1][y].isnumeric() and not read[x - 1][y]:
+                            q.put([x - 1, y])
+                        if y < M - 1 and data[x - 1][y + 1].isnumeric() and not read[x - 1][y + 1]:
+                            q.put([x - 1, y + 1])
+                    if x < N - 1:
+                        if y > 0 and data[x + 1][y - 1].isnumeric() and not read[x + 1][y - 1]:
+                            q.put([x + 1, y - 1])
+                        if data[x + 1][y].isnumeric() and not read[x + 1][y]:
+                            q.put([x + 1, y])
+                        if y < M - 1 and data[x + 1][y + 1].isnumeric() and not read[x + 1][y + 1]:
+                            q.put([x + 1, y + 1])
 
 
         ans = 0
