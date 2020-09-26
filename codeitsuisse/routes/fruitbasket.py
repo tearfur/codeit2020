@@ -16,15 +16,15 @@ def evaluateFruit():
 
     weights = {
         "maApple" : 15,
-        "maAvocado" : 20,
+        "maAvocado" : 30,
         "maPineapple" : 80,
         "maPomegranate" : 25,
-        "maRamubutan" : 30,
+        "maRamubutan" : 50,
         "maWatermeleon" : 90
     }
 
     result = 0
-    
+
     for x in data:
         result += data[x] * weights[x]
 
