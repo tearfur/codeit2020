@@ -7,4 +7,4 @@ import codeitsuisse.routes.geometry
 import codeitsuisse.routes.social_dist
 import codeitsuisse.routes.cluster
 import codeitsuisse.routes.gmo
-import codeitsuisse.routes.bucket
+import codeitsuisse.routes.inventory
