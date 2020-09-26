@@ -82,6 +82,7 @@ def evaluateInventory():
 
         ans.append({"searchItemName": search["searchItemName"], "searchResult": get_result(pre_results)[:10]})
 
+    logging.info("My result :{}".format(ans))
     return json.dumps(ans);
 
 
