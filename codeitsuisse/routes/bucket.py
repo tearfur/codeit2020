@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/bucket-fill', methods=['POST'])
 def evaluateBucket():
-    data = request.get_data();
+    data = request.get_data().decode("utf-8");
     logging.info("data sent for evaluation {}".format(data))
 
     print(data)
