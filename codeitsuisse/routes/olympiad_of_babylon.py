@@ -8,7 +8,7 @@ from codeitsuisse import app;
 logger = logging.getLogger(__name__)
 
 @app.route('/olympiad-of-babylon', methods=['POST'])
-def evaluatePortfolio():
+def evaluateOlympiad():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
 
@@ -24,7 +24,7 @@ def evaluatePortfolio():
         target = x
         bye = []
         for i in booksAvailable:
-            print("Loop i = "+i)
+            print("Loop i = "+str(i))
             if target == i:
                 print("target = i blyat")
                 count += 1
@@ -37,7 +37,7 @@ def evaluatePortfolio():
                 temp.append(i)
                 for j in booksAvailable:
                     if j != i:
-                        print("Loop j = "+j)
+                        print("Loop j = "+str(j)
                         if target - j >= 0:
                             targetClone -= j
                             print("tarclone = "+ tarClone)
