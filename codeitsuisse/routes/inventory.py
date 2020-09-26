@@ -18,7 +18,7 @@ def evaluateInventory():
         if i == 0:
             ret = ""
             for k in range(j):
-                ret += "-" + item_in[k]
+                ret += "+" + item_in[k]
             return ret
         elif j == 0:
             ret = ""
@@ -40,22 +40,19 @@ def evaluateInventory():
             temp_str = result
             for j, char in enumerate(result):
                 if char == "+" or char == "-":
-                    try:
-                        if char == "+" and result[j - 2] == "-":
-                            temp_str = temp_str.replace(result[j - 2: j + 1], '')
-                        elif char == "-" and result[j - 2] == "+":
-                            temp_str = temp_str.replace(result[j - 2: j + 2], result[j - 1])
-                        else:
-                            temp[-1] += 1
-                    except IndexError:
+                    if j >= 2 and char == "+" and result[j - 2] == "-":
+                        temp_str = temp_str[:j - 2] + "\0\0\0" + temp_str[j + 1:]
+                    elif j >= 2 and char == "-" and result[j - 2] == "+":
+                        temp_str = temp_str[:j - 2] + temp_str[j - 1] + "\0\0\0" + temp_str[j + 2:]
+                    else:
                         temp[-1] += 1
-            res[i] = temp_str
+            res[i] = temp_str.replace("\0", "")
 
         return [x for _, _, x in sorted(zip(temp, items, res), key=itemgetter(0, 1))][:10]
 
 
     ans = []
-    for search in data:
+    for search in data[:1]:
         pre_results = []
         for item in search["items"]:
             item_lower = item.lower()
