@@ -37,7 +37,7 @@ def evaluatePortfolio():
                         if target - j >= 0:
                             targetClone -= j
                             temp.append(j)
-                            if targetClone < eff or eff = 0:
+                            if targetClone < eff or eff == 0:
                                 eff = targetClone
                                 bye = temp
                 temp.clear()
