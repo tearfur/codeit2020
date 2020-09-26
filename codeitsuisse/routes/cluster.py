@@ -27,32 +27,15 @@ def evaluateCluster():
             read[i][j] = True
             while not q.empty():
                 y, x = q.get()
-                if y > 0:
-                    if x > 0 and data[y - 1][x - 1].isnumeric() and not read[y - 1][x - 1]:
-                        q.put([y - 1, x - 1])
-                        read[y - 1][x - 1] = True
-                    if data[y - 1][x].isnumeric() and not read[y - 1][x]:
-                        q.put([y - 1, x])
-                        read[y - 1][x] = True
-                    if x < M - 1 and data[y - 1][x + 1].isnumeric() and not read[y - 1][x + 1]:
-                        q.put([y - 1, x + 1])
-                        read[y - 1][x + 1] = True
-                if y < N - 1:
-                    if x > 0 and data[y + 1][x - 1].isnumeric() and not read[y + 1][x - 1]:
-                        q.put([y + 1, x - 1])
-                        read[y + 1][x - 1] = True
-                    if data[y + 1][x].isnumeric() and not read[y + 1][x]:
-                        q.put([y + 1, x])
-                        read[y + 1][x] = True
-                    if x < M - 1 and data[y + 1][x + 1].isnumeric() and not read[y + 1][x + 1]:
-                        q.put([y + 1, x + 1])
-                        read[y + 1][x + 1] = True
-                if x > 0 and data[y][x - 1].isnumeric() and not read[y][x - 1]:
-                    q.put([y, x - 1])
-                    read[y][x - 1] = True
-                if x < M - 1 and data[y][x + 1].isnumeric() and not read[y][x + 1]:
-                    q.put([y, x + 1])
-                    read[y][x + 1] = True
+                for i1 in range(-1, 2):
+                    for j1 in range(-1, 2):
+                        if i1 == 0 and j1 == 0:
+                            continue
+                        inew = y + i1
+                        jnew = x + j1
+                        if 0 <= inew < N and 0 <= jnew < M and data[inew][jnew].isnumeric() and not read[inew][jnew]:
+                            q.put([inew, jnew])
+                            read[inew][jnew] = True
 
 
         for i, row in enumerate(data):
