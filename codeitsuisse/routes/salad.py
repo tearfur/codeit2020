@@ -20,17 +20,17 @@ def evaluateSalad():
         for i in prices:
             count = 0
             tmpSum = 0
-            for j in i:
-                if count == n:
-                    ans = tmpSum if ans == 0 else min(ans, tmpSum)
-                    tmpSum = 0
-                    count = 0
-                elif j != "X":
-                    tmpSum += int(j)
+            for j, val in enumerate(i):
+                if val != "X":
                     count += 1
+                    tmpSum += int(val)
+                    if count >= n:
+                        if count > n:
+                            tmpSum -= int(i[j - 10])
+                        ans = tmpSum if ans == 0 else min(ans, tmpSum)
                 else:
-                    tmpSum = 0
                     count = 0
+                    tmpSum = 0
 
     logging.info("My result :{}".format(ans))
     return json.dumps({'result': ans});
