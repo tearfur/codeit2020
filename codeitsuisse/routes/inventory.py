@@ -52,7 +52,7 @@ def evaluateInventory():
 
 
     ans = []
-    for search in data[:1]:
+    for search in data:
         pre_results = []
         for item in search["items"]:
             item_lower = item.lower()
