@@ -1,5 +1,6 @@
 import logging
 import json
+from math import ceil
 
 from flask import request, jsonify;
 
@@ -15,8 +16,8 @@ def evaluateGMO():
     seqs = data["list"]
 
 
-    def fillA(str_l, rem):
-        for num in range(min(rem, 2)):
+    def fillA(str_l, rem, n):
+        for num in range(min(rem, n)):
             str_l.append("A")
             rem -= 1
         return rem
@@ -46,22 +47,23 @@ def evaluateGMO():
         str_list = []
 
         for i in range(acgt_count):
+            a_rem = fillA(str_list, a_rem, 1)
             str_list.append("ACGT")
 
         for i in range(cc_count):
-            a_rem = fillA(str_list, a_rem)
+            a_rem = fillA(str_list, a_rem, 2)
             str_list.append("CC")
 
         for i in range(c_rem):
-            a_rem = fillA(str_list, a_rem)
+            a_rem = fillA(str_list, a_rem, 2)
             str_list.append("C")
 
         for i in range(g_rem):
-            a_rem = fillA(str_list, a_rem)
+            a_rem = fillA(str_list, a_rem, 2)
             str_list.append("G")
 
         for i in range(t_rem):
-            a_rem = fillA(str_list, a_rem)
+            a_rem = fillA(str_list, a_rem, 2)
             str_list.append("T")
 
         for i in range(a_rem):
