@@ -18,7 +18,7 @@ def evaluateCluster():
 
     ans = 0
     if 3 <= M <= 1000 and 3 <= N <= 1000:
-        read = [[False] * M] * N
+        read = [[False for j in range(M)] for i in range(N)]
 
 
         def search(i, j):
@@ -48,7 +48,7 @@ def evaluateCluster():
                         q.put([y + 1, x + 1])
                         read[y + 1][x + 1] = True
 
-
+                        
         for i, row in enumerate(data):
             for j, unit in enumerate(row):
                 if unit == "1" and not read[i][j]:
