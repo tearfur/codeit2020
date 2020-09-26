@@ -14,15 +14,16 @@ def evaluateFruit():
     data = json.loads(dataString)
     logging.info("data sent for evaluation {}".format(data))
 
+    pineappleAmount = data.get("maPineapple")
     appleAmount = data.get("maApple")
     watermelonAmount = data.get("maWatermelon")
-    bananaAmount = data.get("maBanana")
 
+    pineappleWeight = 30
     appleWeight = 10
     watermelonWeight = 20
-    bananaWeight = 30
 
-    result = appleAmount*appleWeight + watermelonAmount*watermelonWeight + bananaAmount*bananaWeight
+
+    result = appleAmount*appleWeight + watermelonAmount*watermelonWeight + pineappleAmount*pineappleWeight
 
     logging.info("My result :{}".format(result))
     return json.dumps(result);
