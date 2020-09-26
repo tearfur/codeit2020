@@ -44,11 +44,11 @@ def evaluateOlympiad():
                                 eff = targetClone
                                 print("eff = "+str(eff))
                                 bye = temp
-                temp.clear()
-                for x in bye:
-                    count += 1
-                    booksAvailable.remove(x)
-        print(booksAvailable)
+            temp.clear()
+            for x in bye:
+                count += 1
+                booksAvailable.remove(x)
+            print(booksAvailable)
 
     result = {"optimalNumberOfBooks":count}
 
