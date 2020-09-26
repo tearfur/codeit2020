@@ -47,8 +47,14 @@ def evaluateCluster():
                     if x < M - 1 and data[y + 1][x + 1].isnumeric() and not read[y + 1][x + 1]:
                         q.put([y + 1, x + 1])
                         read[y + 1][x + 1] = True
+                if x > 0 and data[y][x - 1].isnumeric() and not read[y][x - 1]:
+                    q.put([y, x - 1])
+                    read[y][x - 1] = True
+                if x < M - 1 and data[y][x + 1].isnumeric() and not read[y][x + 1]:
+                    q.put([y, x + 1])
+                    read[y][x + 1] = True
 
-                        
+
         for i, row in enumerate(data):
             for j, unit in enumerate(row):
                 if unit == "1" and not read[i][j]:
