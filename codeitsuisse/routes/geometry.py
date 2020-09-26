@@ -32,13 +32,15 @@ def evaluateGeometry():
 
 
     ans = []
-    for i, pt in enumerate(shape):
-        nextIndex = (i + 1) % len(shape)
-        ret = findIntersection(pt["x"], pt["y"], shape[nextIndex]["x"], shape[nextIndex]["y"], line[0]["x"], line[0]["y"], line[1]["x"], line[1]["y"])
-        if ret is not None:
-            ans.append(ret)
-        else:
-            continue
+    if 1 <= len(shape) + len(line) <= 100:
+        for i, start in enumerate(shape):
+            endIndex = (i + 1) % len(shape)
+            ret = findIntersection(start["x"], start["y"], shape[endIndex]["x"], shape[endIndex]["y"],
+                                line[0]["x"], line[0]["y"], line[1]["x"], line[1]["y"])
+            if ret is not None:
+                ans.append(ret)
+            else:
+                continue
 
     logging.info("My result :{}".format(ans))
     return json.dumps(ans);
