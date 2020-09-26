@@ -16,20 +16,21 @@ def evaluateSalad():
     prices = data.get("salad_prices_street_map")
     ans = 0
     
-    for i in prices:
-        count = 0
-        tmpSum = 0
-        for j in i:
-            if count >= n:
-                ans = tmpSum if ans == 0 else min(ans, tmpSum)
-                tmpSum = 0
-                count = 0
-            elif j != "X":
-                tmpSum += int(j)
-                count += 1
-            else:
-                tmpSum = 0
-                count = 0
+    if n <= len(prices[0]) <= 100:
+        for i in prices:
+            count = 0
+            tmpSum = 0
+            for j in i:
+                if count == n:
+                    ans = tmpSum if ans == 0 else min(ans, tmpSum)
+                    tmpSum = 0
+                    count = 0
+                elif j != "X":
+                    tmpSum += int(j)
+                    count += 1
+                else:
+                    tmpSum = 0
+                    count = 0
 
     logging.info("My result :{}".format(ans))
     return json.dumps({'result': ans});
