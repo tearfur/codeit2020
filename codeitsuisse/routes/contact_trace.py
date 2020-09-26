@@ -18,17 +18,37 @@ def evaluateContactTrace():
     cluster = data.get("cluster")
     clusterGenome = cluster.get("genome")
     result = []
-    count1 = (1 for inf,clu in zip(infectedGenome,clusterGenome) if inf != clu)
-    count2 = (1 for inf,ori in zip(infectedGenome,clusterGenome) if inf != ori)
 
-    if count1 <= 2 && count2 <= 2:
-        if count1 == 0 && count2 == 0:
-            result.append(infected.get("name")+" -> "+cluster.get("name"))
-            result.append(infected.get("name")+" -> "+origin.get("name"))
-        else if count1 != 0 && count2 == 0:
-            result.append(infected.get("name")+"* -> "+cluster.get("name")+" -> "+origin.get("name"))
-        else:
-            result.append(infected.get("name")+"* -> "+cluster.get("name")+"* -> "+origin.get("name"))
+    count1 = 0
+silentCheck1 = True
+count2 = 0
+silentCheck2 = True
+i=0
+for a,b in zip(infectedGenome,clusterGenome):
+    i += 1
+    if a != b:
+        count1 += 1
+        if (i+1)%3 == 0 :
+            silentCheck1 = False
+i=0
+for a,b in zip(clusterGenome,originGenome):
+    if a != b:
+        count2 += 1
+        if (i+1)%3 == 0 :
+            silentCheck1 = False
 
+if count1 == 0 and count2 == 0:
+    result.append(infected.get("name") + " -> " + cluster.get("name"))
+    result.append(infected.get("name") + " -> " + origin.get("name"))
+
+if count1 <= 2 and count2 <= 2:
+    if silentCheck1 == True and silentCheck2 == True:
+        result.append(infected.get("name") + " -> " + cluster.get("name") + " -> " + origin.get("name"))
+    elif silentCheck1 == False and silentCheck2 == True:
+        result.append(infected.get("name") + "* -> " + cluster.get("name") + " -> " + origin.get("name"))
+    elif silentCheck1 == True and silentCheck2 == False:
+        result.append(infected.get("name") + " -> " + cluster.get("name") + "* -> " + origin.get("name"))
+    else:
+        result.append(infected.get("name") + "* -> " + cluster.get("name") + "* -> " + origin.get("name"))
     logging.info("My result :{}".format(result))
     return json.dumps(result);
