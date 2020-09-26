@@ -1,5 +1,6 @@
 import logging
 import json
+from operator import itemgetter
 
 from flask import request, jsonify;
 
@@ -32,7 +33,7 @@ def evaluateInventory():
             return get_pre_result(d, i, j - 1, search_in, item_in) + "+" + item_in[j - 1]
 
 
-    def sort_by_op(res):
+    def get_results(items, res):
         temp = []
         for i, result in enumerate(res):
             temp.append(0)
@@ -50,7 +51,7 @@ def evaluateInventory():
                         temp[-1] += 1
             res[i] = temp_str
 
-        return [x for _, x in sorted(zip(temp, res))]
+        return [x for _, _, x in sorted(zip(temp, items, res), key=itemgetter(0, 1))][:10]
 
 
     ans = []
@@ -81,8 +82,7 @@ def evaluateInventory():
 
             pre_results.append(get_pre_result(d, n - 1, m - 1, search["searchItemName"], item))
 
-        result = [x for _, x in sorted(zip(search["items"], sort_by_op(pre_results)))][:10]
-        ans.append({"searchItemName": search["searchItemName"], "searchResult": result})
+        ans.append({"searchItemName": search["searchItemName"], "searchResult": get_results(search["items"], pre_results)})
 
     logging.info("My result :{}".format(ans))
     return json.dumps(ans);
