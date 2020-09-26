@@ -38,12 +38,11 @@ def evaluateContactTrace():
                 silentCheck1 = False
         i += 1
 
-    if count1 == 0 and count2 == 0:
-        result.append(infected.get("name") + " -> " + cluster[0].get("name"))
-        result.append(infected.get("name") + " -> " + origin.get("name"))
-
     if count1 <= 2 and count2 <= 2:
-        if silentCheck1 == True and silentCheck2 == True:
+        if count1 == 0 and count2 == 0:
+            result.append(infected.get("name") + " -> " + cluster[0].get("name"))
+            result.append(infected.get("name") + " -> " + origin.get("name"))
+        elif silentCheck1 == True and silentCheck2 == True:
             result.append(infected.get("name") + " -> " + cluster[0].get("name") + " -> " + origin.get("name"))
         elif silentCheck1 == False and silentCheck2 == True:
             result.append(infected.get("name") + "* -> " + cluster[0].get("name") + " -> " + origin.get("name"))
