@@ -18,9 +18,9 @@ def evaluateFruit():
     for x in data.values():
         fruits.append(x)
 
-    weight1 = 40
-    weight2 = 70
-    weight3 = 100
+    weight1 = 30
+    weight2 = 50
+    weight3 = 80
 
     result = fruits[0]*weight1 + fruits[1]*weight2 + fruits[2]*weight3
 
