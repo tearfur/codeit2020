@@ -32,7 +32,7 @@ def evaluateGeometry():
 
 
     ans = []
-    if 1 <= len(shape) + len(line) <= 100:
+    if 1 <= len(shape) <= 100:
         for i, start in enumerate(shape):
             endIndex = (i + 1) % len(shape)
             ret = findIntersection(start["x"], start["y"], shape[endIndex]["x"], shape[endIndex]["y"],
