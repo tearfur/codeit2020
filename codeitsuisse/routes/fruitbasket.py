@@ -15,16 +15,16 @@ def evaluateFruit():
     logging.info("data sent for evaluation {}".format(data))
 
     weights = {
-        "maApple" = 15
-        "maAvocado" = 20
-        "maPineapple" = 80
-        "maPomegranate" = 25
-        "maRamubutan" = 30
+        "maApple" = 15,
+        "maAvocado" = 20,
+        "maPineapple" = 80,
+        "maPomegranate" = 25,
+        "maRamubutan" = 30,
         "maWatermeleon" = 90
     }
 
     for x in data:
-        result += data[x]*weights[x]
+        result += data[x] * weights[x]
 
     logging.info("My result :{}".format(result))
     return json.dumps(result);
