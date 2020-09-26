@@ -9,7 +9,9 @@ logger = logging.getLogger(__name__)
 
 @app.route('/olympiad-of-babylon', methods=['POST'])
 def evaluatePortfolio():
-    data = request.get_json();
+    dataByteString = request.get_data()
+    dataString = dataByteString.decode('utf-8')
+    data = json.loads(dataString)
     logging.info("data sent for evaluation {}".format(data))
 
     daysAvailable = data.get(days)
