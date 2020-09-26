@@ -1,5 +1,6 @@
 import logging
 import json
+from queue import Queue
 
 from flask import request, jsonify;
 
@@ -15,27 +16,33 @@ def evaluateCluster():
     M = len(data[0])
     N = len(data)
 
-    ans = 0
     if 3 <= M <= 1000 and 3 <= N <= 1000:
         read = [[False] * M] * N
 
 
         def search(i, j):
-            try:
-                if data[i][j].isnumeric() and not read[i][j]:
-                    read[i][j] = True
-                    search(i - 1, j - 1)
-                    search(i - 1, j)
-                    search(i - 1, j + 1)
-                    search(i, j - 1)
-                    search(i, j + 1)
-                    search(i + 1, j - 1)
-                    search(i + 1, j)
-                    search(i + 1, j + 1)
-            except IndexError:
-                pass
+            q = Queue()
+            q.put([i, j])
+            while not q.empty():
+                x, y = q.get()
+                read[x][y] = True
+                if x > 0:
+                    if y > 0 and not read[x - 1][y - 1]:
+                        q.put([x - 1, y - 1])
+                    if not read[x - 1][y]:
+                        q.put([x - 1, y])
+                    if y < M - 1 and not read[x - 1][y + 1]:
+                        q.put([x - 1, y + 1])
+                if x < N - 1:
+                    if y > 0 and not read[x + 1][y - 1]:
+                        q.put([x + 1, y - 1])
+                    if not read[x + 1][y]:
+                        q.put([x + 1, y])
+                    if y < M - 1 and not read[x + 1][y + 1]:
+                        q.put([x + 1, y + 1])
 
 
+        ans = 0
         for i, row in enumerate(data):
             for j, unit in enumerate(row):
                 if unit == "1" and not read[i][j]:
