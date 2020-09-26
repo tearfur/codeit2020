@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 def evaluateFruit():
     data = request.get_data();
     json.loads(data)
+    json.dump(data, sort_keys=True, indent=4)
     logging.info("data sent for evaluation {}".format(data))
 
     appleAmount = data.get("maApple")
