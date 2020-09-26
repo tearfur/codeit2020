@@ -26,7 +26,7 @@ def evaluateSalad():
                     tmpSum += int(val)
                     if count >= n:
                         if count > n:
-                            tmpSum -= int(i[j - 10])
+                            tmpSum -= int(i[j - n])
                         ans = tmpSum if ans == 0 else min(ans, tmpSum)
                 else:
                     count = 0
