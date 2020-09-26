@@ -25,9 +25,6 @@ def evaluateGeometry():
         inter = {"x": ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) / denom,
                 "y": ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / denom}
 
-        inter["x"] = round(inter["x"], 2)
-        inter["y"] = round(inter["y"], 2)
-
         if min(x1, x2) <= inter["x"] <= max(x1, x2) and min(y1, y2) <= inter["y"] <= max(y1, y2):
             return inter
 
