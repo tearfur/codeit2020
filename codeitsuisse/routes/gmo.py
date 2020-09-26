@@ -1,6 +1,5 @@
 import logging
 import json
-from queue import Queue
 
 from flask import request, jsonify;
 
