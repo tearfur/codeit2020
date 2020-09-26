@@ -12,6 +12,7 @@ def evaluateInventory():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
 
+
     def get_pre_result(d, i, j, search_in, item_in):
         if i == 0:
             ret = ""
@@ -31,7 +32,7 @@ def evaluateInventory():
             return get_pre_result(d, i, j - 1, search_in, item_in) + "+" + item_in[j - 1]
 
 
-    def get_result(res):
+    def sort_by_op(res):
         temp = []
         for i, result in enumerate(res):
             temp.append(0)
@@ -80,7 +81,8 @@ def evaluateInventory():
 
             pre_results.append(get_pre_result(d, n - 1, m - 1, search["searchItemName"], item))
 
-        ans.append({"searchItemName": search["searchItemName"], "searchResult": get_result(pre_results)[:10]})
+        result = [x for _, x in sorted(zip(search["items"], sort_by_op(pre_results)))][:10]
+        ans.append({"searchItemName": search["searchItemName"], "searchResult": result})
 
     logging.info("My result :{}".format(ans))
     return json.dumps(ans);
