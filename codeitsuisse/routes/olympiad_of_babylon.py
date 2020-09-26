@@ -37,7 +37,7 @@ def evaluateOlympiad():
                 temp.append(i)
                 for j in booksAvailable:
                     if j != i:
-                        print("Loop j = "+str(j)
+                        print("Loop j = "+str(j))
                         if (target - j) >= 0:
                             targetClone -= j
                             print("tarclone = "+ tarClone)
