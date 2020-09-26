@@ -15,9 +15,7 @@ def evaluateGeometry():
     shape = data.get("shapeCoordinates");
     line = data.get("lineCoordinates")
     
-    logging.info("{}".format(shape[0]))
-    logging.info("{}".format(shape[1]))
-    logging.info("{}".format(shape[2]))
+    logging.info("{}".format(shape))
 
     logging.info("My result :{}".format(ans))
     return json.dumps({'result': ans});
