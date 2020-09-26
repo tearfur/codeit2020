@@ -43,7 +43,8 @@ def evaluateOlympiad():
                             if targetClone < eff or eff == 0:
                                 eff = targetClone
                                 print("eff = "+str(eff))
-                                bye = temp
+                                for x in temp:
+                                    bye.append(x)
             temp.clear()
             print(bye)
             for x in bye:
