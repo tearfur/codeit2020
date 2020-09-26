@@ -32,7 +32,7 @@ def evaluateSalad():
                 count = 0
 
     logging.info("My result :{}".format(ans))
-    return json.dumps(ans);
+    return json.dumps({'result': ans});
 
 
 
