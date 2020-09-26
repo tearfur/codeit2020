@@ -16,7 +16,7 @@ def evaluateSalad():
     prices = data.get("salad_prices_street_map")
     ans = 0
     
-    if n <= len(prices[0]) <= 100:
+    if 1 <= n <= len(prices[0]) <= 100:
         for i in prices:
             count = 0
             tmpSum = 0
