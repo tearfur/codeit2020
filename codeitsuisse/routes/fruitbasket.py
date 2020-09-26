@@ -16,11 +16,11 @@ def evaluateFruit():
 
     weights = {
         "maApple" : 47,
-        "maAvocado" : 88,
+        "maAvocado" : 58,
         "maPineapple" : 121,
         "maPomegranate" : 35,
-        "maRamubutan" : 40,
-        "maWatermelon" : 230
+        "maRamubutan" : 30,
+        "maWatermelon" : 280
     }
 
     result = 0
