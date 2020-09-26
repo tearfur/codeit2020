@@ -15,6 +15,7 @@ def evaluateCluster():
     M = len(data[0])
     N = len(data)
 
+    ans = 0
     if 3 <= M <= 1000 and 3 <= N <= 1000:
         read = [[False] * M] * N
 
@@ -35,15 +36,14 @@ def evaluateCluster():
                 pass
 
 
-        ans = 0
         for i, row in enumerate(data):
             for j, unit in enumerate(row):
                 if unit == "1" and not read[i][j]:
                     search(i, j)
                     ans += 1
 
-    logging.info("My result :{}".format(ans))
-    return json.dumps({"answer": ans});
+logging.info("My result :{}".format(ans))
+return json.dumps({"answer": ans});
 
 
 
