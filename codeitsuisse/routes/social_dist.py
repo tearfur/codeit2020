@@ -8,8 +8,8 @@ from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 
-@app.route('/revisitgeometry', methods=['POST'])
-def evaluateGeometry():
+@app.route('/social_distancing', methods=['POST'])
+def evaluateSocialDist():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
 
