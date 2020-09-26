@@ -14,11 +14,12 @@ def evaluateGMO():
 
     seqs = data["list"]
 
+
     def fillA(str_l, rem):
-        for num in range(min(rem, 2)):
-            str_l.append("A")
-            rem -= 1
-        return rem
+    for num in range(min(rem, 2)):
+        str_l.append("A")
+        rem -= 1
+    return rem
 
 
     for seq in seqs:
@@ -35,27 +36,36 @@ def evaluateGMO():
         t_rem = t - acgt_count
         sep_count = c_rem + g_rem + t_rem
 
+        if sep_count < ceil(a_rem / 2) - 2 and acgt_count > 0:
+            acgt_count -= 1
+            a_rem += 1
+            c_rem += 1
+            g_rem += 1
+            t_rem += 1
+
         str_list = []
 
         for i in range(acgt_count):
             str_list.append("ACGT")
-            a_rem = fillA(str_list, a_rem)
 
         for i in range(cc_count):
-            str_list.append("CC")
             a_rem = fillA(str_list, a_rem)
+            str_list.append("CC")
 
         for i in range(c_rem):
-            str_list.append("C")
             a_rem = fillA(str_list, a_rem)
+            str_list.append("C")
 
         for i in range(g_rem):
-            str_list.append("G")
             a_rem = fillA(str_list, a_rem)
+            str_list.append("G")
 
         for i in range(t_rem):
-            str_list.append("T")
             a_rem = fillA(str_list, a_rem)
+            str_list.append("T")
+
+        for i in range(a_rem):
+            str_list.append("A")
 
         seq["geneSequence"] = ''.join(str_list)
 
