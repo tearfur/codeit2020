@@ -16,7 +16,7 @@ def evaluateContactTrace():
     origin = data.get("origin")
     originGenome = origin.get("genome")
     cluster = data.get("cluster")
-    clusterGenome = cluster.get("genome")
+    clusterGenome = cluster[0].get("genome")
     result = []
 
     count1 = 0
