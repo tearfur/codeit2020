@@ -42,8 +42,8 @@ def evaluateCluster():
                     search(i, j)
                     ans += 1
 
-logging.info("My result :{}".format(ans))
-return json.dumps({"answer": ans});
+    logging.info("My result :{}".format(ans))
+    return json.dumps({"answer": ans});
 
 
 
