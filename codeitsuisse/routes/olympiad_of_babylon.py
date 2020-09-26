@@ -40,7 +40,7 @@ def evaluateOlympiad():
                         print("Loop j = "+str(j))
                         if (target - j) >= 0:
                             targetClone -= j
-                            print("tarclone = "+str(tarClone))
+                            print("tarclone = "+str(targetClone))
                             temp.append(j)
                             if targetClone < eff or eff == 0:
                                 eff = targetClone
