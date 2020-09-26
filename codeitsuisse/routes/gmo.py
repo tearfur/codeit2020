@@ -9,17 +9,17 @@ logger = logging.getLogger(__name__)
 
 @app.route('/intelligent-farming', methods=['POST'])
 def evaluateGMO():
-    data = request.get_json()
+    data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
 
     seqs = data["list"]
 
 
     def fillA(str_l, rem):
-    for num in range(min(rem, 2)):
-        str_l.append("A")
-        rem -= 1
-    return rem
+        for num in range(min(rem, 2)):
+            str_l.append("A")
+            rem -= 1
+        return rem
 
 
     for seq in seqs:
@@ -70,7 +70,7 @@ def evaluateGMO():
         seq["geneSequence"] = ''.join(str_list)
 
     logging.info("My result :{}".format(data))
-    return jsonify(data)
+    return jsonify(data);
 
 
 
