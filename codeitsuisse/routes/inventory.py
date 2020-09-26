@@ -80,7 +80,7 @@ def evaluateInventory():
 
             pre_results.append(get_pre_result(d, n - 1, m - 1, search["searchItemName"], item))
 
-        ans.append({"searchItemName": search["searchItemName"], "searchResult": get_result(pre_results)[:11]})
+        ans.append({"searchItemName": search["searchItemName"], "searchResult": get_result(pre_results)[:10]})
 
     return json.dumps(ans);
 
