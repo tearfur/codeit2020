@@ -13,6 +13,9 @@ def evaluateCluster():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
 
+    M = len(data[0])
+    N = len(data)
+
     ans = 0
     if 3 <= M <= 1000 and 3 <= N <= 1000:
         read = [[False] * M] * N
