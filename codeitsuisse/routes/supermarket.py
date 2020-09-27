@@ -7,7 +7,7 @@ from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 
-@app.route('/square', methods=['POST'])
+@app.route('/supermarket', methods=['POST'])
 def walk(x):
     for i in range(len(sol)):
         for j in range(len(sol[i])):
