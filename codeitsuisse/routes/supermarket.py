@@ -29,12 +29,12 @@ def evaluateMaze():
     logging.info("data sent for evaluation {}".format(data))
 
     answer = {}
-    tests = data.get("test")
+    tests = data.get("tests")
 
     for x in tests:
-        start = tests.get("start")
-        end = tests.get("end")
-        maze = tests.get("maze")
+        start = x.get("start")
+        end = x.get("end")
+        maze = x.get("maze")
 
         sol = []
         for i in range(len(maze)):
